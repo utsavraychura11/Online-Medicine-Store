@@ -45,7 +45,7 @@ namespace OnlineMedicineStore.Controllers
                     }
                     return View();
                 }
-
+                ViewBag.IsRegistered = true;
                 ModelState.Clear();
                 return View();
             }
