@@ -15,7 +15,7 @@ namespace OnlineMedicineStore.Data
         {
 
         }
-        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<Medicine> Medicine { get; set; }
 
        /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
