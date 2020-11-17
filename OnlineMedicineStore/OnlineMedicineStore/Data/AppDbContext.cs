@@ -16,11 +16,12 @@ namespace OnlineMedicineStore.Data
 
         }
         public DbSet<Medicine> Medicine { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
-       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MedicineDb;Integrated Security=True;");
-            base.OnConfiguring(optionsBuilder);
-        }*/
+        /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+         {
+             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MedicineDb;Integrated Security=True;");
+             base.OnConfiguring(optionsBuilder);
+         }*/
     }
 }

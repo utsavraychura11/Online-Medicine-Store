@@ -8,37 +8,34 @@ using OnlineMedicineStore.Service;
 using OnlineMedicineStore.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Windows.Input;
+using OnlineMedicineStore.Data;
 
 namespace OnlineMedicineStore.Controllers
 {
    
     public class HomeController: Controller
     {
+        private static string username;
+
         private readonly IUserService _userService;
         private readonly IEmailService _emailService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly AppDbContext _context;
+
+
 
         public HomeController(IUserService userService,
             IEmailService emailService,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            AppDbContext context)
         {
             _userService = userService;
             _emailService = emailService;
             _userManager = userManager;
+            _context=context;
         }
         public ViewResult Index()
         {
-
-            /*UserEmailOptions options = new UserEmailOptions
-            {
-                ToEmails = new List<string>() {"test@gmail.com"},
-                PlaceHolders = new List<KeyValuePair<string,string>>()
-                {
-                    new KeyValuePair<string, string>("{{UserName}}","Utsav & Vedant")
-                }
-            };
-
-            await _emailService.SendTestEmail(options);*/
             var userId = _userService.GetUserId();
             var isLoggedIn = _userService.IsAuthenticated();
 
@@ -73,8 +70,8 @@ namespace OnlineMedicineStore.Controllers
             }
             else
             {
-                //var user = _userManager.FindByIdAsync(userId).Result;
                 var user = _userManager.FindByIdAsync(userId).Result;
+                username = user.UserName;
                 return View(user);
             }
             
@@ -86,22 +83,26 @@ namespace OnlineMedicineStore.Controllers
         [Route("update-profile")]
         public async Task<IActionResult> UpdateUser(ApplicationUser user)
         {
+            user.UserName = username;
             if(ModelState.IsValid)
             {
-                var result = await _userManager.UpdateAsync(user);
-                if (result.Succeeded)
+                ApplicationUser apuser = _context.ApplicationUsers.Where(u => u.UserName == user.UserName).FirstOrDefault();
+                
+                apuser.FirstName = user.FirstName;
+                apuser.LastName = user.LastName;
+                apuser.ContactNo = user.ContactNo;
+                apuser.Email = user.Email;
+
+                if(apuser!=null)
                 {
-                    ViewBag.IsUpdated = true;
-                    return View(user);
+                        _context.ApplicationUsers.Update(apuser);
+                        await _context.SaveChangesAsync();
+                        ViewBag.IsUpdated = true;
+                        return View(apuser);
 
                 }
-                foreach (var errorMessage in result.Errors)
-                {
-                    ModelState.AddModelError("", errorMessage.Description);
-                    return View();
-                }
             }
-            return View();
+            return View(user);
         }
     }
 }

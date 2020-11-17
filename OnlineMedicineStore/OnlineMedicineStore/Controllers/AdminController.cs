@@ -56,8 +56,8 @@ namespace OnlineMedicineStore.Controllers
                 Context.Medicine.Add(medicine1);
                 Context.SaveChanges();
 
-                ViewBag.message = "succefuullyy registered!!!!";
-
+               // ViewBag.message = "succefuullyy registered!!!!";
+                ViewBag.IsMedicineRegistered = true;
 
                 /* var result = await _accountRepository.CreateUserAsync(med);
                  if (!result.Succeeded)
@@ -76,28 +76,37 @@ namespace OnlineMedicineStore.Controllers
             return View(med);
         }
 
+       
+        
+        
+        //Admin Login
         public IActionResult AdminLogin()
         {
             return View();
         }
-        public IActionResult Logout()
-        {
-            return RedirectToAction("index","Home");
-        }
-
 
         [HttpPost]
-        public ViewResult AdminLogin(string email1 , string password1)
+        
+        public IActionResult AdminLogin(string email1 , string password1)
         {
-
-            if (password1 == "admin" && email1 == "admin@gmail.com")
+            
+            if ( password1.Equals("admin") && email1.Equals("admin@gmail.com") )
+            {
                 return View("/Admin/index/");
+            }
             else
-                ViewBag.message = "invalid credentials !!";
-            return View();
-            
-            
+            {
+                //ViewBag.message = "invalid credentials !!";
+                return NotFound();
+            }
         }
+        //Admin Logout
+        public IActionResult Logout()
+        {
+            return RedirectToAction("index", "Home");
+        }
+
+        //View Medicine
         public IActionResult ViewMedicine()
         {
             var items = Context.Medicine.ToList();
