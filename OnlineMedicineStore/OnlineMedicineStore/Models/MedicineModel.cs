@@ -17,8 +17,8 @@ namespace OnlineMedicineStore.Models
         public string Description { get; set; }
         public string Category { get; set; }
 
-        public int price { get; set; }
-        public bool isPrescriptionRequired { get; set; }
+        public int Price { get; set; }
+        public bool IsPrescriptionRequired { get; set; }
 
 
 

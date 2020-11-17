@@ -57,44 +57,7 @@ namespace OnlineMedicineStore.Controllers
             return View();
         }
 
-        /*[Authorize]
-        [HttpGet]
-        [Route("update-profile")]
-        public async Task<IActionResult> UpdateProfile()
-        {
-            var userId = _userService.GetUserId();
-            var user = await _userManager.FindByIdAsync(userId);
-           // var isLoggedIn = _userService.IsAuthenticated();
-            return View();
-        }*/
-
-       /* [Authorize]
-        [HttpPost]
-        [Route("update-profile")]
-        public async Task<IActionResult> UpdateProfile()
-        {
-            if(ModelState.IsValid)
-            {
-                var result = await _userManager.UpdateAsync(user);
-                if(!result.Succeeded)
-                {
-                    foreach (var errorMessage in result.Errors)
-                    {
-                        ModelState.AddModelError("", errorMessage.Description);
-                        return View();
-                    }
-                }
-                if (result.Succeeded)
-                {
-                    ViewBag.IsUpdated = true;
-                    ModelState.Clear();
-                    return View();
-                }
-            }
-            
-
-            return View(user);
-        }*/
+       
 
         [Authorize]
         [HttpGet]
