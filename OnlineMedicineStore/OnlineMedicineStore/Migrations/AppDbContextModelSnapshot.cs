@@ -158,17 +158,26 @@ namespace OnlineMedicineStore.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsPrescriptionRequired")
+                        .HasColumnType("bit");
+
                     b.Property<string>("MedicineName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medicines");
+                    b.ToTable("Medicine");
                 });
 
             modelBuilder.Entity("OnlineMedicineStore.Models.ApplicationUser", b =>
