@@ -17,6 +17,9 @@ namespace OnlineMedicineStore.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required(ErrorMessage = "Please Enter your Username")]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
         /*[Required(ErrorMessage = "Please Enter your Username")]
         [Display(Name = "Username")]
         public string Username { get; set; }*/

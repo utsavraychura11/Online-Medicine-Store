@@ -95,5 +95,50 @@ namespace OnlineMedicineStore.Controllers
 
             return View(user);
         }*/
+
+        [Authorize]
+        [HttpGet]
+        [Route("update-profile")]
+        public IActionResult UpdateUser()
+        {
+            //var userId = _userManager.GetUserId(HttpContext.User);
+            var userId = _userService.GetUserId();
+            //var usernm = _userManager.GetUserName(HttpContext.User);
+            if(userId==null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                //var user = _userManager.FindByIdAsync(userId).Result;
+                var user = _userManager.FindByIdAsync(userId).Result;
+                return View(user);
+            }
+            
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        [Route("update-profile")]
+        public async Task<IActionResult> UpdateUser(ApplicationUser user)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    ViewBag.IsUpdated = true;
+                    return View(user);
+
+                }
+                foreach (var errorMessage in result.Errors)
+                {
+                    ModelState.AddModelError("", errorMessage.Description);
+                    return View();
+                }
+            }
+            return View();
+        }
     }
 }

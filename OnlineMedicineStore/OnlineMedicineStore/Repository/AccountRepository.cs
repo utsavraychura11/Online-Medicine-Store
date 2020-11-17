@@ -43,7 +43,7 @@ namespace OnlineMedicineStore.Repository
                 LastName = userModel.LastName,
                 ContactNo = userModel.ContactNo,
                 Email = userModel.Email,
-                UserName = userModel.Email,  
+                UserName = userModel.UserName,  
                 PhoneNumber = userModel.ContactNo 
                 
             };

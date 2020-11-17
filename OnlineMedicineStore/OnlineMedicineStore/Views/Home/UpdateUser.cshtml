@@ -1,4 +1,4 @@
-﻿@model OnlineMedicineStore.Models.SignUpUserModel
+﻿@model OnlineMedicineStore.Models.ApplicationUser
 
 @{
     Layout = "_Layout";
@@ -42,7 +42,7 @@
                         </p>
                     </div>
                 }
-                <form asp-action="SignUp">
+                <form asp-action="UpdateUser">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="FirstName" class="control-label"></label>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="UserName" class="control-label"></label>
-                        <input asp-for="UserName" class="form-control" />
+                        <input asp-for="UserName" class="form-control" disabled/>
                         <span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -69,22 +69,13 @@
                         <input asp-for="ContactNo" class="form-control" />
                         <span asp-validation-for="ContactNo" class="text-danger"></span>
                     </div>
+                    
                     <div class="form-group">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ConfirmPassword" class="control-label"></label>
-                        <input asp-for="ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Sign Up" class="btn btn-primary btn-block" />
+                        <input type="submit" value="Update" class="btn btn-primary btn-block" />
                     </div>
                 </form>
             </div>
-            
+
         </div>
 
         <div class="col-md-4 text-center">

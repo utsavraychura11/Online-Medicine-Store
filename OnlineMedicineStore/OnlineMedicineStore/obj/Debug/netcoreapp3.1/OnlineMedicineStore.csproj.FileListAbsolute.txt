@@ -424,10 +424,10 @@ H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStor
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
-H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_header.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginInfo.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Account\ChangePasword.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUser.cshtml.g.cs

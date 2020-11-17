@@ -8,8 +8,8 @@ namespace OnlineMedicineStore.Models
 {
     public class SignInUserModel
     {
-        [Required(ErrorMessage ="Please Enter E-mail ID"), EmailAddress(ErrorMessage ="Please Enter Valid E-mail ID")]
-        [Display(Name ="Email")]
+        [Required(ErrorMessage ="Please Enter E-mail ID"), /*EmailAddress(ErrorMessage ="Please Enter Valid E-mail ID")*/]
+        [Display(Name ="Username/Email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please Enter a Password"),DataType(DataType.Password)]

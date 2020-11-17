@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Controllers\HomeController.cs~RF2fae1f9.TMP" />
     <None Remove="Models\ApplicationUser.cs~RF15432d2.TMP" />
   </ItemGroup>
 
