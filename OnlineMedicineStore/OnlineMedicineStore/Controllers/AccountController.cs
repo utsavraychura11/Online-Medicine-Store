@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineMedicineStore.Models;
 using OnlineMedicineStore.Repository;
 using OnlineMedicineStore.Service;
+using Microsoft.AspNetCore.Identity;
 
 namespace OnlineMedicineStore.Controllers
 {
@@ -14,12 +16,17 @@ namespace OnlineMedicineStore.Controllers
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IUserService _userService;
-
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         public AccountController(IAccountRepository accountRepository,
-            IUserService userService)
+            IUserService userService,
+           UserManager<ApplicationUser> userManager,
+           SignInManager<ApplicationUser> signInManager)
         {
             _accountRepository = accountRepository;
             _userService = userService;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [Route("signup")]
@@ -62,9 +69,47 @@ namespace OnlineMedicineStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(SignInUserModel signInUserModel, string returnUrl)
         {
-            if(ModelState.IsValid)
+            if (signInUserModel.Email.IndexOf('@') > -1)
             {
-                var result = await _accountRepository.PasswordSignInAsync(signInUserModel);
+                //Validate email format
+                string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                                       @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                                          @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+                Regex re = new Regex(emailRegex);
+                if (!re.IsMatch(signInUserModel.Email))
+                {
+                    ModelState.AddModelError("Email", "Email is not valid");
+                }
+            }
+            else
+            {
+                //validate Username format
+                string emailRegex = @"^[a-zA-Z0-9]*$";
+                Regex re = new Regex(emailRegex);
+                if (!re.IsMatch(signInUserModel.Email))
+                {
+                    ModelState.AddModelError("Email", "Username is not valid");
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                var userName = signInUserModel.Email;
+                if (userName.IndexOf('@') > -1)
+                {
+                    var user = await _userManager.FindByEmailAsync(signInUserModel.Email);
+                    if (user == null)
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        return View(signInUserModel);
+                    }
+                    else
+                    {
+                        userName = user.UserName;
+                    }
+                }
+                var result = await _signInManager.PasswordSignInAsync(userName, signInUserModel.Password, signInUserModel.RememberMe, false);
                 if(result.Succeeded)
                 {
                     if(!string.IsNullOrEmpty(returnUrl))
