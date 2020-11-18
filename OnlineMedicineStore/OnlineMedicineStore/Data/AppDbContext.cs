@@ -15,6 +15,7 @@ namespace OnlineMedicineStore.Data
         {
 
         }
+
         public DbSet<Medicine> Medicine { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 

@@ -84,7 +84,7 @@ namespace OnlineMedicineStore.Controllers
         }
         
         //Admin Login
-        public IActionResult AdminLogin()
+       /* public IActionResult AdminLogin()
         {
             return View();
         }
@@ -103,7 +103,8 @@ namespace OnlineMedicineStore.Controllers
                 //ViewBag.message = "invalid credentials !!";
                 return NotFound();
             }
-        }
+        }*/
+
         //Admin Logout
         public IActionResult Logout()
         {
@@ -173,8 +174,29 @@ namespace OnlineMedicineStore.Controllers
             return View(allUsers);
         }
         
+        [HttpGet]
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
 
-
+        [HttpPost]
+        public IActionResult AdminLogin(AdminModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                if(model.Email.Equals("admin@gmail.com") && model.Password.Equals("admin"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid Credintials");
+                    return View();
+                }
+            }
+            return View();
+        }
 
     }
-    }
+}
