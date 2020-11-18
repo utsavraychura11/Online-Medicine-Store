@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m0TDd1p0yFexdLVDt1cjWmBuJd/vsNpoIJN8VYzWgkEw5lizUlWuS5jcBtPZSkS3ZLfDyZJh5tbHENFbV7/+Kg==",
+  "dgSpecHash": "WWL0aL5e1bw8HGk8evxZMT6Hl8IgJnOpM5X3IDG5p9jzp16USvzkJuvZeLlObOktZUId8+qUzRbFFRFsZncpFw==",
   "success": true,
-  "projectFilePath": "H:\\Sem 5 Drive\\WDDN\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
+  "projectFilePath": "H:\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\UTSAV SSD\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\UTSAV SSD\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.0\\microsoft.aspnetcore.cryptography.internal.5.0.0.nupkg.sha512",

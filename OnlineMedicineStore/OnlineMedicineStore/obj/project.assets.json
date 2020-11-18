@@ -8810,11 +8810,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Sem 5 Drive\\WDDN\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
+      "projectUniqueName": "H:\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
       "projectName": "OnlineMedicineStore",
-      "projectPath": "H:\\Sem 5 Drive\\WDDN\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
+      "projectPath": "H:\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
       "packagesPath": "C:\\Users\\UTSAV SSD\\.nuget\\packages\\",
-      "outputPath": "H:\\Sem 5 Drive\\WDDN\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\obj\\",
+      "outputPath": "H:\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
