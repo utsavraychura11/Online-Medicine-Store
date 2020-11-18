@@ -2,7 +2,7 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Signup";
+    ViewData["Title"] = "Update Profile";
 }
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>SignUp</title>
+    <title>Update Profile</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -30,15 +30,15 @@
 <body>
 
     <div class="container">
-        <h1>Sign Up</h1>
+        <h1>Update Profile</h1>
         <hr />
         <div class="row">
             <div class="col-md-4 offset-4">
-                @if (ViewBag.IsRegistered == true)
+                @if (ViewBag.IsUpdated == true)
                 {
                     <div class="alert alert-success" role="alert">
                         <p>
-                            You have Registered Successfully !!
+                            Profile Update Successfully !!
                         </p>
                     </div>
                 }
@@ -79,7 +79,7 @@
         </div>
 
         <div class="col-md-4 text-center">
-            <p>Already Have an Account? </p><a asp-action="login" asp-controller="Account" style="margin-left:450px;">Login</a>
+            <a asp-action="login" asp-controller="Account" style="margin-left:450px;">Login</a>
         </div>
 
 

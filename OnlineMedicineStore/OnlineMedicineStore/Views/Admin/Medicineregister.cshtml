@@ -22,7 +22,15 @@
     <div class="col-md-4 offset-4">
 
         <h4>Medicine</h4>
-        <div class="bg-success">@ViewBag.message</div>
+        @* <div class="bg-success">@ViewBag.message</div>*@
+        @if (ViewBag.IsMedicineRegistered = true)
+        {
+            <div class="alert alert-success" role="alert">
+                <p>
+                    You have Registered Successfully !!
+                </p>
+            </div>
+        }
         <form asp-action="medicineregister" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
