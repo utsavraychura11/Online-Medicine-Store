@@ -50,6 +50,7 @@ namespace OnlineMedicineStore
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
 
             services.Configure<SMTPConfigModel>(_configuration.GetSection("SMTPConfig"));
         }

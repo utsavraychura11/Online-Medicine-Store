@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineMedicineStore.Data;
 using OnlineMedicineStore.Models;
+using OnlineMedicineStore.Repository;
+
 
 namespace OnlineMedicineStore.Controllers
 {
@@ -16,10 +18,15 @@ namespace OnlineMedicineStore.Controllers
         // GET: AdminController
         private readonly AppDbContext Context;
         private readonly IWebHostEnvironment webHostEnvironment;
-        public AdminController(AppDbContext context, IWebHostEnvironment _webHostEnvironment)
+        private readonly IAdminRepository _adminRepository;
+
+        public AdminController(AppDbContext context, 
+            IWebHostEnvironment _webHostEnvironment,
+            IAdminRepository adminRepository)
         {
             Context = context;
             webHostEnvironment = _webHostEnvironment;
+            _adminRepository = adminRepository;
         }
 
 
@@ -27,7 +34,9 @@ namespace OnlineMedicineStore.Controllers
         {
             return View();
         }
-        public ActionResult Medicineregister()
+
+        [HttpGet]
+        public IActionResult Medicineregister()
         {
             return View();
         }
@@ -35,12 +44,19 @@ namespace OnlineMedicineStore.Controllers
         // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Medicineregister(Medicine med)
+        public  ActionResult Medicineregister(Medicine med)
         {
             if (ModelState.IsValid)
             {
                 //Write Your Code
-             
+              /* if(med.CoverPhoto != null)
+                {
+                    string folder = "medicines/";
+                    folder += Guid.NewGuid().ToString()+"_"+med.CoverPhoto.FileName;
+                    string serverFolder = Path.Combine(webHostEnvironment.WebRootPath,folder);
+
+                   await med.CoverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
+                }*/
 
                 var medicine1 = new Medicine
                 {
@@ -50,34 +66,22 @@ namespace OnlineMedicineStore.Controllers
                     Category = med.Category,
                     Price = med.Price,
                     IsPrescriptionRequired = med.IsPrescriptionRequired
-                 
                       
                 };
                 Context.Medicine.Add(medicine1);
-                Context.SaveChanges();
+                
+                var r1= Context.SaveChangesAsync();
+                if(r1.IsCompleted)
+                {
+                    ViewBag.IsMedicineRegistered = true;
+                }
 
-               // ViewBag.message = "succefuullyy registered!!!!";
-                ViewBag.IsMedicineRegistered = true;
-
-                /* var result = await _accountRepository.CreateUserAsync(med);
-                 if (!result.Succeeded)
-                 {
-                     foreach (var errorMessage in result.Errors)
-                     {
-                         ModelState.AddModelError("", errorMessage.Description);
-                     }
-                     return View();
-                 }
-                */
                 ModelState.Clear();
                 return View();
+                
             }
-
             return View(med);
         }
-
-       
-        
         
         //Admin Login
         public IActionResult AdminLogin()
@@ -158,6 +162,17 @@ namespace OnlineMedicineStore.Controllers
             }
 
         }
+
+        //View All Users
+
+        [HttpGet]
+        [Route("/view-users")]
+        public ViewResult ViewUsers()
+        {
+            var allUsers = _adminRepository.GetAllUsers();
+            return View(allUsers);
+        }
+        
 
 
 

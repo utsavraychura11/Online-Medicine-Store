@@ -11,8 +11,8 @@ namespace OnlineMedicineStore.Data
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Medicine  Name")]
-        [Display(Name = "medicine")]
+        [Required(ErrorMessage = "Please Enter Medicine Name")]
+        [Display(Name = "Medicine")]
 
         public string MedicineName { get; set; }
 
@@ -22,21 +22,27 @@ namespace OnlineMedicineStore.Data
 
         public string Description { get; set; }
         
-        [Required(ErrorMessage = "Please Enter Its category ")]
-        [Display(Name = "category")]
+        [Required(ErrorMessage = "Please Enter Category ")]
+        [Display(Name = "Category")]
 
         public string Category { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Price  ")]
-        [Display(Name = "price")]
+        [Required(ErrorMessage = "Please Enter Price")]
+        [Display(Name = "Price")]
 
         public int Price { get; set; }
 
-        [Required(ErrorMessage = "Please Enter whtether prescription will be required or not ")]
-        [Display(Name = "prescription")]
-
+        [Required(ErrorMessage = "Please Enter whtether prescription will be required or not.")]
+        [Display(Name = "Prescription")]
 
         public bool IsPrescriptionRequired { get; set; }
+
+        //[Required]
+        //[Display(Name ="Cover Photo")]
+
+        //public IFormFile CoverPhoto { get; set; }
+
+        //public string CoverImageUrl { get; set; }
 
     }
 }

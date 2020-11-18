@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using System.Windows.Input;
 using OnlineMedicineStore.Data;
 
+
+
 namespace OnlineMedicineStore.Controllers
 {
    
@@ -21,6 +23,7 @@ namespace OnlineMedicineStore.Controllers
         private readonly IEmailService _emailService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly AppDbContext _context;
+
 
 
 
@@ -103,6 +106,18 @@ namespace OnlineMedicineStore.Controllers
                 }
             }
             return View(user);
+
         }
+
+        /*[Authorize]
+        [HttpGet]
+        [Route("view-all-medicine")]
+
+        public IActionResult GetAllMedicines()
+        {
+            var items = _context.Medicine.ToList();
+            return View(items);
+        }*/
+        
     }
 }
