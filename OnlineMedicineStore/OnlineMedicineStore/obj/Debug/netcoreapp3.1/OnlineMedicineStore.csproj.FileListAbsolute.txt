@@ -878,3 +878,6 @@ H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStor
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\_AdminLayout.cshtml.g.cs
 H:\Sem 5 Drive\WDDN\Online Medicine Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUser.cshtml.g.cs
 C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUser.cshtml.g.cs
+C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\viewuser_medicine.cshtml.g.cs
+C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Checkout.cshtml.g.cs

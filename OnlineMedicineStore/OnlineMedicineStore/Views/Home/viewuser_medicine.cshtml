@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "viewuser_medicine";
+}
+
+<h1>viewuser_medicine</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                MedicineName
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Buy
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.medicines)
+        {
+            <tr>
+                <td>
+                    @item.MedicineName
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Category
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <th>
+                    <a asp-controller="cart" asp-action="buy" asp-route-id="@item.Id"> Buy Now</a>
+                </th>
+            </tr>
+        }
+
+    </tbody>
+</table>

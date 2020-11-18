@@ -12,8 +12,8 @@ using OnlineMedicineStore.Data;
 
 namespace OnlineMedicineStore.Controllers
 {
-   
-    public class HomeController: Controller
+
+    public class HomeController : Controller
     {
         private static string username;
 
@@ -32,7 +32,7 @@ namespace OnlineMedicineStore.Controllers
             _userService = userService;
             _emailService = emailService;
             _userManager = userManager;
-            _context=context;
+            _context = context;
         }
         public ViewResult Index()
         {
@@ -54,7 +54,7 @@ namespace OnlineMedicineStore.Controllers
             return View();
         }
 
-       
+
 
         [Authorize]
         [HttpGet]
@@ -64,7 +64,7 @@ namespace OnlineMedicineStore.Controllers
             //var userId = _userManager.GetUserId(HttpContext.User);
             var userId = _userService.GetUserId();
             //var usernm = _userManager.GetUserName(HttpContext.User);
-            if(userId==null)
+            if (userId == null)
             {
                 return NotFound();
             }
@@ -74,7 +74,7 @@ namespace OnlineMedicineStore.Controllers
                 username = user.UserName;
                 return View(user);
             }
-            
+
         }
 
 
@@ -84,25 +84,33 @@ namespace OnlineMedicineStore.Controllers
         public async Task<IActionResult> UpdateUser(ApplicationUser user)
         {
             user.UserName = username;
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 ApplicationUser apuser = _context.ApplicationUsers.Where(u => u.UserName == user.UserName).FirstOrDefault();
-                
+
                 apuser.FirstName = user.FirstName;
                 apuser.LastName = user.LastName;
                 apuser.ContactNo = user.ContactNo;
                 apuser.Email = user.Email;
 
-                if(apuser!=null)
+                if (apuser != null)
                 {
-                        _context.ApplicationUsers.Update(apuser);
-                        await _context.SaveChangesAsync();
-                        ViewBag.IsUpdated = true;
-                        return View(apuser);
+                    _context.ApplicationUsers.Update(apuser);
+                    await _context.SaveChangesAsync();
+                    ViewBag.IsUpdated = true;
+                    return View(apuser);
 
                 }
             }
             return View(user);
         }
+        public IActionResult viewuser_medicine()
+        {
+
+            Medicine med = new Medicine();
+            ViewBag.medicines = _context.Medicine;
+            return View();
+        }
+    
     }
 }
