@@ -32,6 +32,14 @@ namespace OnlineMedicineStore
             /*Hard coded connection string
             services.AddDbContext<AppDbContext>(
                 options=>options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MedicineDb;Integrated Security=True;"));*/
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             services.AddDbContext<AppDbContext>(
                 options => options.UseSqlServer( _configuration.GetConnectionString("DefaultConnection") ));
@@ -70,7 +78,7 @@ namespace OnlineMedicineStore
             app.UseAuthentication();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
