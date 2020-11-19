@@ -19,6 +19,10 @@ namespace OnlineMedicineStore.Data
         public DbSet<Medicine> Medicine { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderMedicine> OrderMedicines { get; set; }
+
         /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
          {
              optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MedicineDb;Integrated Security=True;");
