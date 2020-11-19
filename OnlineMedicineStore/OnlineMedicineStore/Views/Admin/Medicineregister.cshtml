@@ -55,7 +55,10 @@
             <input asp-for="Price" class="form-control" />
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
-        
+        <div class="form-group">
+            Photo File<input type="file" class="form-control-file" />
+        </div>
+
         <div class="form-group form-check">
             <label class="form-check-label">
                 <input class="form-check-input" asp-for="IsPrescriptionRequired" /> @Html.DisplayNameFor(model => model.IsPrescriptionRequired)
@@ -68,7 +71,7 @@
             <a asp-action="Index">Back </a>
         </div>
 
-        
+
 
     </form>
     </div>

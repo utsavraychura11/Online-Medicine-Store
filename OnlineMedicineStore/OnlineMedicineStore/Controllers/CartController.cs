@@ -103,7 +103,7 @@ namespace OnlineMedicineStore.Controllers
             return RedirectToAction("index");
 
         }
-        public async System.Threading.Tasks.Task<IActionResult> CheckoutAsync(int id)
+        public async System.Threading.Tasks.Task<IActionResult> Checkout(int id)
         {
             var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
@@ -151,8 +151,6 @@ namespace OnlineMedicineStore.Controllers
 
 
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-
-            return View();
 
             return View();
 

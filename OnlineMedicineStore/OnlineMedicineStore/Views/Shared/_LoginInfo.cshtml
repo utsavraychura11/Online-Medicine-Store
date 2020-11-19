@@ -5,31 +5,30 @@
 
     <ul class="navbar-nav flex-grow-1 justify-content-end">
 
-        <li class="nav-item  nav-link px-5">
+        <li class="nav-item  nav-link px-4">
             <a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a>
         </li>
 
-        <li class="nav-item nav-link px-5">
+        <li class="nav-item nav-link px-4">
             <a class="nav-link" asp-controller="Home" asp-action="aboutus">About Us</a>
         </li>
 
-        <li class="nav-item nav-link px-5">
+        <li class="nav-item nav-link px-4">
             <a class="nav-link" asp-controller="Home" asp-action="contactus">Contact Us</a>
         </li>
 
-        <li class="nav-item nav-link px-5">
+        <li class="nav-item nav-link px-4">
             <a class="nav-link" asp-controller="Order" asp-action="myorder">My Orderes</a>
         </li>
+        <li class="nav-item nav-link px-4">
+            <a class="nav-link" asp-controller="Home" asp-action="viewuser_medicine">View Medicines</a>
+        </li>
 
-        <a class="dropdown-item" asp-controller="Home" asp-action="viewuser_medicine">View All Medicines</a>
+            @*<li class="nav-link" style="color:white;" href="#" role="button">
+                Hello @User.Identity.Name
+            </li>*@
 
-
-
-        @*<li class="nav-link" style="color:white;" href="#" role="button">
-            Hello @User.Identity.Name
-        </li>*@
-
-        <li class="nav-item dropdown  nav-link px-5">
+        <li class="nav-item dropdown  nav-link px-4">
             <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hello @User.Identity.Name
             </a>
@@ -41,7 +40,7 @@
             </div>
         </li>
 
-        <li class="nav-item  nav-link px-5">
+        <li class="nav-item  nav-link px-4">
             <a class="nav-link" asp-controller="account" asp-action="logout">Logout</a>
         </li>
 

@@ -74,7 +74,7 @@ namespace OnlineMedicineStore.Controllers
                 };
                  Context.Medicine.Add(medicine1);
 
-                 Context.SaveChangesAsync();
+                 Context.SaveChanges();
                 
                  ViewBag.IsMedicineRegistered = true;
                 

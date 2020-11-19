@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Medicine Details";
+
+    Layout = "_AdminLayout";
 }
 
 @*<h1>Medicine Details</h1>
@@ -62,7 +64,7 @@
         </ul>
         <div class="card-body">
             <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-link btn-primary" role="button" style="color:white;list-style:none;">Edit</a>
-            <a asp-action="Index" class="btn btn-link btn-outline-info" role="button">Back to List</a>
+            <a asp-action="ViewMedicine" class="btn btn-link btn-outline-info" role="button">Back to List</a>
         </div>
     </div>
 </div>
