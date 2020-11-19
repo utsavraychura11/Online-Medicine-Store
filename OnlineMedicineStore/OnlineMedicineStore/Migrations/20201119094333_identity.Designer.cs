@@ -10,8 +10,8 @@ using OnlineMedicineStore.Data;
 namespace OnlineMedicineStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201119100517_test1234")]
-    partial class test1234
+    [Migration("20201119094333_identity")]
+    partial class identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -182,6 +182,56 @@ namespace OnlineMedicineStore.Migrations
                     b.ToTable("Medicine");
                 });
 
+            modelBuilder.Entity("OnlineMedicineStore.Data.Order1", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Order1");
+                });
+
+            modelBuilder.Entity("OnlineMedicineStore.Data.OrderMedicine1", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("MedicinesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price_total")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("MedicinesId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderMedicine1");
+                });
+
             modelBuilder.Entity("OnlineMedicineStore.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -308,6 +358,38 @@ namespace OnlineMedicineStore.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("OnlineMedicineStore.Data.Order1", b =>
+                {
+                    b.HasOne("OnlineMedicineStore.Models.ApplicationUser", "user")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("OnlineMedicineStore.Data.OrderMedicine1", b =>
+                {
+                    b.HasOne("OnlineMedicineStore.Models.ApplicationUser", "user")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("OnlineMedicineStore.Data.Medicine", "Medicines")
+                        .WithMany()
+                        .HasForeignKey("MedicinesId");
+
+                    b.HasOne("OnlineMedicineStore.Data.Order1", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Medicines");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("user");
                 });
 #pragma warning restore 612, 618
         }

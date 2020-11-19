@@ -14,6 +14,7 @@ namespace OnlineMedicineStore.Data
         [Key]
         public int Id { get; set; }
 
+
         public string ApplicationUserId { get; set; }
         public ApplicationUser AppUser { get; set; }
     }

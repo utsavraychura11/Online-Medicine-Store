@@ -9,6 +9,7 @@ namespace OnlineMedicineStore.Models
 {
     public class ApplicationUser : IdentityUser
     {
+
         [Required(ErrorMessage = "Please Enter your First Name")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

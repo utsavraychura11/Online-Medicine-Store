@@ -20,9 +20,11 @@ namespace OnlineMedicineStore.Data
         public int OrderId { get; set; }
         public Order Order { get; set; }
 
-        public Medicine Medicines { get; set; }
+
+        public int  MedicineId { get; set; }
         public int Quantity { get; set; }
 
         public int Price_total { get; set; }
+
     }
 }

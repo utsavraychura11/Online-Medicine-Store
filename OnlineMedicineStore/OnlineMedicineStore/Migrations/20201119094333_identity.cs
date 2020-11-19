@@ -2,7 +2,7 @@
 
 namespace OnlineMedicineStore.Migrations
 {
-    public partial class test4 : Migration
+    public partial class identity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

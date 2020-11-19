@@ -111,6 +111,13 @@ namespace OnlineMedicineStore.Controllers
             ViewBag.medicines = _context.Medicine;
             return View();
         }
+
+        public IActionResult myorder()
+        {
+
+
+            return View();        
+        }
     
     }
 }
