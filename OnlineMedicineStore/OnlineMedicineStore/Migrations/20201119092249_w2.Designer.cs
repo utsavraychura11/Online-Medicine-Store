@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineMedicineStore.Data;
 
 namespace OnlineMedicineStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201119092249_w2")]
+    partial class w2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,7 +182,7 @@ namespace OnlineMedicineStore.Migrations
                     b.ToTable("Medicine");
                 });
 
-            modelBuilder.Entity("OnlineMedicineStore.Data.Order1", b =>
+            modelBuilder.Entity("OnlineMedicineStore.Data.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -194,10 +196,10 @@ namespace OnlineMedicineStore.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Order1");
+                    b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("OnlineMedicineStore.Data.OrderMedicine1", b =>
+            modelBuilder.Entity("OnlineMedicineStore.Data.OrderMedicine", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -227,7 +229,7 @@ namespace OnlineMedicineStore.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderMedicine1");
+                    b.ToTable("OrderMedicine");
                 });
 
             modelBuilder.Entity("OnlineMedicineStore.Models.ApplicationUser", b =>
@@ -358,7 +360,7 @@ namespace OnlineMedicineStore.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OnlineMedicineStore.Data.Order1", b =>
+            modelBuilder.Entity("OnlineMedicineStore.Data.Order", b =>
                 {
                     b.HasOne("OnlineMedicineStore.Models.ApplicationUser", "user")
                         .WithMany()
@@ -367,7 +369,7 @@ namespace OnlineMedicineStore.Migrations
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("OnlineMedicineStore.Data.OrderMedicine1", b =>
+            modelBuilder.Entity("OnlineMedicineStore.Data.OrderMedicine", b =>
                 {
                     b.HasOne("OnlineMedicineStore.Models.ApplicationUser", "user")
                         .WithMany()
@@ -377,7 +379,7 @@ namespace OnlineMedicineStore.Migrations
                         .WithMany()
                         .HasForeignKey("MedicinesId");
 
-                    b.HasOne("OnlineMedicineStore.Data.Order1", "Order")
+                    b.HasOne("OnlineMedicineStore.Data.Order", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)

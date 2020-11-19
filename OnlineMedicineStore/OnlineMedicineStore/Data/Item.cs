@@ -9,10 +9,10 @@ namespace OnlineMedicineStore.Data
 {
     public class Item
     {
-        public int OrderId { get; set; }
+        public int Id { get; set; }
 
         public Medicine Medicines { get; set; }
-
+                                                                                        
 
         public int Quantity { get; set; }
 

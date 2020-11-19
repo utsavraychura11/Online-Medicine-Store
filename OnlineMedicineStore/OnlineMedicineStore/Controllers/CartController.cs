@@ -1,22 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OnlineMedicineStore.Helpers;
 using OnlineMedicineStore.Data;
 using OnlineMedicineStore.Models;
+using OnlineMedicineStore.Service;
+using Microsoft.AspNetCore.Identity;
 
 namespace OnlineMedicineStore.Controllers
 {
     public class CartController : Controller
     {
+        private readonly IUserService _userService;
+        private readonly UserManager<ApplicationUser> _userManager;
+
 
         private readonly AppDbContext Context;
 
-        public CartController(AppDbContext context)
+        private readonly AppDbContext Context1;
+
+        public CartController(IUserService userService,
+            UserManager<ApplicationUser> userManager, AppDbContext context)
         {
+            _userService = userService;
+            _userManager = userManager;
             Context = context;
+            Context1 = context;
+
         }
 
         public IActionResult Index()
@@ -93,13 +103,53 @@ namespace OnlineMedicineStore.Controllers
             return RedirectToAction("index");
 
         }
-        public IActionResult Checkout(int id)
+        public async System.Threading.Tasks.Task<IActionResult> CheckoutAsync(int id)
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+           /* var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(Item => Item.Medicines.Price * Item.Quantity);
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            var userId = _userService.GetUserId();
+            if (userId == null)
+            {
+                return NotFound();
+            }
 
+            var user = _userManager.FindByIdAsync(userId).Result;
+            
+            Order1 o1 = new Order1();
+            o1.ApplicationUserId = userId;
+            o1.user = user;
+            Context.Order1.Add(o1);
+            await   Context.SaveChangesAsync();
+            
+            /* System.Threading.Thread.Sleep(4000);
+             List<Order> o3 = Context1.Order.Where(x => x.ApplicationUserId == userId).ToList();
+          
+            Order1 o2 = Context1.Order1.Where(x => x.ApplicationUserId == userId).FirstOrDefault();
+            foreach (var c1 in cart)
+            {
+                OrderMedicine1 om1 = new OrderMedicine1();
+                om1.ApplicationUserId = userId;
+                om1.user = user;
+                om1.OrderId = o2.Id;
+                om1.Order = o2;
+                om1.Medicines = c1.Medicines;
+                om1.Quantity = c1.Quantity;
+                om1.Price_total = (c1.Quantity * c1.Medicines.Price);
+                Context.OrderMedicine1.Add(om1);
+               await  Context.SaveChangesAsync();
+
+
+
+            }
+
+
+
+
+
+
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            */
             return View();
 
 

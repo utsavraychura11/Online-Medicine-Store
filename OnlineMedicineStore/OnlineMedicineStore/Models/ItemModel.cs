@@ -11,7 +11,7 @@ namespace OnlineMedicineStore.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int OrderId { get; set; }
+        public int Id { get; set; }
 
         public MedicineModel Medicines { get; set; }
 

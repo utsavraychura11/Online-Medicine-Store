@@ -881,3 +881,5 @@ C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore
 C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
 C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\viewuser_medicine.cshtml.g.cs
 C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Checkout.cshtml.g.cs
+C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ViewUsers.cshtml.g.cs
+C:\Users\vedant rajyaguru\Source\Repos\Online-Medicine-Store\OnlineMedicineStore\OnlineMedicineStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NullLayout.cshtml.g.cs
