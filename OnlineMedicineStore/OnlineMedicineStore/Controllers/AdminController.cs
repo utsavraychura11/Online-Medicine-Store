@@ -74,11 +74,9 @@ namespace OnlineMedicineStore.Controllers
                 };
                 Context.Medicine.Add(medicine1);
 
-                var r1 = Context.SaveChangesAsync();
-                if (r1.IsCompleted)
-                {
-                    ViewBag.IsMedicineRegistered = true;
-                }
+                 Context.SaveChangesAsync();
+                 ViewBag.IsMedicineRegistered = true;
+                
 
                 ModelState.Clear();
                 return View();

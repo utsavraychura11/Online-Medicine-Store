@@ -4,11 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
+using OnlineMedicineStore.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineMedicineStore.Data
 {
     public class Medicine
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please Enter Medicine Name")]

@@ -7,9 +7,9 @@ namespace OnlineMedicineStore.Repository
     public interface IAdminRepository
     {
         IEnumerable<ApplicationUser> GetAllUsers();
-        ApplicationUser DeleteUser(string id);
-        ApplicationUser GetUser(string id);
+      //  ApplicationUser DeleteUser(string id);
+        //ApplicationUser GetUser(string id);
 
-        Medicine GetMedicine(int id);
+       // Medicine GetMedicine(int id);
     }
 }
