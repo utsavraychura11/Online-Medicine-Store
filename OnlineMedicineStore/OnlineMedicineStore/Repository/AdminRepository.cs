@@ -20,6 +20,10 @@ namespace OnlineMedicineStore.Repository
             return _context.ApplicationUsers;
         }
 
+        public Medicine GetMedicine(int id)
+        {
+            return _context.Medicine.Find(id);
+        }
 
 
     }
