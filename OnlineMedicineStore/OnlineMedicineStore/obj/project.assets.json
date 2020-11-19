@@ -8845,23 +8845,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\UTSAV SSD\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\vedant rajyaguru\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Sem 5 Drive\\WDDN\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
+      "projectUniqueName": "C:\\Users\\vedant rajyaguru\\Source\\Repos\\Online-Medicine-Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
       "projectName": "OnlineMedicineStore",
-      "projectPath": "H:\\Sem 5 Drive\\WDDN\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
-      "packagesPath": "C:\\Users\\UTSAV SSD\\.nuget\\packages\\",
-      "outputPath": "H:\\Sem 5 Drive\\WDDN\\Online Medicine Store\\OnlineMedicineStore\\OnlineMedicineStore\\obj\\",
+      "projectPath": "C:\\Users\\vedant rajyaguru\\Source\\Repos\\Online-Medicine-Store\\OnlineMedicineStore\\OnlineMedicineStore\\OnlineMedicineStore.csproj",
+      "packagesPath": "C:\\Users\\vedant rajyaguru\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vedant rajyaguru\\Source\\Repos\\Online-Medicine-Store\\OnlineMedicineStore\\OnlineMedicineStore\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\UTSAV SSD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vedant rajyaguru\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8869,6 +8865,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\vedant rajyaguru\\source\\repos\\Newprogram1": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8940,7 +8937,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

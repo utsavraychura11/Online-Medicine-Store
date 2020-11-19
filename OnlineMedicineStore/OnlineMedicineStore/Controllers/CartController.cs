@@ -124,7 +124,7 @@ namespace OnlineMedicineStore.Controllers
             
             /* System.Threading.Thread.Sleep(4000);
              List<Order> o3 = Context1.Order.Where(x => x.ApplicationUserId == userId).ToList();
-          
+          4
             Order1 o2 = Context1.Order1.Where(x => x.ApplicationUserId == userId).FirstOrDefault();
             foreach (var c1 in cart)
             {
