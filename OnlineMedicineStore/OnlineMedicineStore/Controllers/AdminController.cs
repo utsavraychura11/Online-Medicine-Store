@@ -72,9 +72,10 @@ namespace OnlineMedicineStore.Controllers
                     IsPrescriptionRequired = med.IsPrescriptionRequired
 
                 };
-                Context.Medicine.Add(medicine1);
+                 Context.Medicine.Add(medicine1);
 
                  Context.SaveChangesAsync();
+                
                  ViewBag.IsMedicineRegistered = true;
                 
 
@@ -124,8 +125,6 @@ namespace OnlineMedicineStore.Controllers
         {
 
             return View(Context.Medicine.Where(x => x.Id == id).FirstOrDefault());
-
-
 
         }
         [HttpPost]
@@ -201,7 +200,13 @@ namespace OnlineMedicineStore.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public IActionResult MedicineDetails(int id)
+        {
+            var details = _adminRepository.GetMedicine(id);
+            return View(details);
+        }
 
 
     }
-    }
+}
