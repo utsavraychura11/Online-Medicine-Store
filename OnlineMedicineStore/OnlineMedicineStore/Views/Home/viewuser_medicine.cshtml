@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewData["Title"] = "viewuser_medicine";
+    ViewData["Title"] = "View Medicine";
 }
 
-<h1>viewuser_medicine</h1>
-
+<h1 class="h1 text-center">View Medicines</h1>
+<hr />
 <table class="table">
     <thead>
         <tr>
@@ -43,7 +43,7 @@
                     @item.Price
                 </td>
                 <th>
-                    <a asp-controller="cart" asp-action="buy" asp-route-id="@item.Id"> Buy Now</a>
+                    <a asp-controller="cart" asp-action="buy" asp-route-id="@item.Id" class="btn btn-success"> Buy Now</a>
                 </th>
             </tr>
         }

@@ -32,7 +32,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\medicines\" />
     <Folder Include="wwwroot\prescription\" />
   </ItemGroup>

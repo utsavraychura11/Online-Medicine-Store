@@ -30,9 +30,10 @@
 <body>
 
     <div class="container">
-        <h1>Sign Up</h1>
+        <h1 class="h1 text-center">Sign Up</h1>
         <hr />
         <div class="row">
+
             <div class="col-md-4 offset-4">
                 @if (ViewBag.IsRegistered == true)
                 {
@@ -88,7 +89,7 @@
         </div>
 
         <div class="col-md-4 text-center">
-            <a asp-action="login" asp-controller="Account" style="margin-left:400px;"><p>Already Have an Account?</p> Login</a>
+            <a asp-action="login" asp-controller="Account" style="margin-left:525px;" class="btn btn-outline-primary">Login</a>
         </div>
 
 

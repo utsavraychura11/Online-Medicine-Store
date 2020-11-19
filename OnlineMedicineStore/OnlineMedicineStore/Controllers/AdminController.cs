@@ -29,35 +29,53 @@ namespace OnlineMedicineStore.Controllers
             _adminRepository = adminRepository;
         }
 
+        //Admin Login
 
+        [HttpGet]
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AdminLogin(AdminModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Email.Equals("admin@gmail.com") && model.Password.Equals("admin"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid Credintials");
+                    return View();
+                }
+            }
+            return View();
+        }
+
+        //Home Page of Admin
         public ActionResult Index()
         {
             return View();
         }
+
+        //Add Medicine
 
         [HttpGet]
         public IActionResult Medicineregister()
         {
             return View();
         }
-        
-        // POST: AdminController/Create
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public  ActionResult Medicineregister(Medicine med)
         {
             if (ModelState.IsValid)
             {
-                //Write Your Code
-              /* if(med.CoverPhoto != null)
-                {
-                    string folder = "medicines/";
-                    folder += Guid.NewGuid().ToString()+"_"+med.CoverPhoto.FileName;
-                    string serverFolder = Path.Combine(webHostEnvironment.WebRootPath,folder);
-
-                   await med.CoverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
-                }*/
-
+               
                 var medicine1 = new Medicine
                 {
                     
@@ -69,46 +87,13 @@ namespace OnlineMedicineStore.Controllers
                       
                 };
                 Context.Medicine.Add(medicine1);
-                
-                var r1= Context.SaveChangesAsync();
-                if(r1.IsCompleted)
-                {
-                    ViewBag.IsMedicineRegistered = true;
-                }
-
+                Context.SaveChangesAsync();               
                 ModelState.Clear();
+                ViewBag.IsMedicineRegistered = true;
                 return View();
                 
             }
             return View(med);
-        }
-        
-        //Admin Login
-       /* public IActionResult AdminLogin()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        
-        public IActionResult AdminLogin(string email1 , string password1)
-        {
-            
-            if ( password1.Equals("admin") && email1.Equals("admin@gmail.com") )
-            {
-                return View("/Admin/index/");
-            }
-            else
-            {
-                //ViewBag.message = "invalid credentials !!";
-                return NotFound();
-            }
-        }*/
-
-        //Admin Logout
-        public IActionResult Logout()
-        {
-            return RedirectToAction("index", "Home");
         }
 
         //View Medicine
@@ -117,6 +102,16 @@ namespace OnlineMedicineStore.Controllers
             var items = Context.Medicine.ToList();
             return View(items);
         }
+
+        //Get Medicine
+        [Route("/Admin/MedicineDetails/{id}")]
+        public IActionResult GetMedicineDetails(int id)
+        {
+            var details = _adminRepository.GetMedicine(id);
+            return View(details);
+        }
+
+        //Edit Medicine
 
         public ActionResult Edit(int id)
         {
@@ -139,14 +134,14 @@ namespace OnlineMedicineStore.Controllers
             }
 
         }
+
+        //Delete Medicine
         public ActionResult Delete(int id)
         {
 
             return View(Context.Medicine.Where(x => x.Id == id).FirstOrDefault());
-
-
-
         }
+
         [HttpPost]
         public ActionResult Delete(int id, Medicine med1)
         {
@@ -172,30 +167,34 @@ namespace OnlineMedicineStore.Controllers
         {
             var allUsers = _adminRepository.GetAllUsers();
             return View(allUsers);
-        }
-        
+        }        
+
+        //Delete User
+
         [HttpGet]
-        public IActionResult AdminLogin()
+        public IActionResult DeleteUser(string id)
         {
-            return View();
+            var user = _adminRepository.GetUser(id);
+            if(user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
 
         [HttpPost]
-        public IActionResult AdminLogin(AdminModel model)
+        [ActionName("DeleteUser")]
+        public IActionResult DeleteUserConfirmed(string id)
         {
-            if(ModelState.IsValid)
-            {
-                if(model.Email.Equals("admin@gmail.com") && model.Password.Equals("admin"))
-                {
-                    return RedirectToAction("Index", "Admin");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid Credintials");
-                    return View();
-                }
-            }
-            return View();
+            var user = _adminRepository.GetUser(id);
+            _adminRepository.DeleteUser(user.Id);
+            return RedirectToAction("ViewUsers","Admin");
+        }
+
+        //Admin Logout
+        public IActionResult Logout()
+        {
+            return RedirectToAction("index", "Home");
         }
 
     }

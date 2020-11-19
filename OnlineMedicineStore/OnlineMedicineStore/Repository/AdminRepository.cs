@@ -19,5 +19,26 @@ namespace OnlineMedicineStore.Repository
         {
             return _context.ApplicationUsers;
         }
+
+        public ApplicationUser DeleteUser(string id)
+        {
+            var user = _context.ApplicationUsers.Find(id);
+            if(user!=null)
+            {
+                _context.ApplicationUsers.Remove(user);
+                _context.SaveChanges();
+            }
+            return user;
+        }
+
+        public ApplicationUser GetUser(string id)
+        {
+            return _context.ApplicationUsers.Find(id);
+        }
+
+        public Medicine GetMedicine(int id)
+        {
+            return _context.Medicine.Find(id);
+        }
     }
 }
