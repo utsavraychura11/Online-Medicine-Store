@@ -165,13 +165,13 @@ namespace OnlineMedicineStore.Controllers
 
         //Forgot Password
 
-        [AllowAnonymous, HttpGet("forgot-password")]
+        [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
             return View();
         }
 
-        [AllowAnonymous, HttpPost("forgot-password")]
+        [AllowAnonymous,HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
         {
             if (ModelState.IsValid)
