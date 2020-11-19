@@ -190,6 +190,9 @@ namespace OnlineMedicineStore.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
@@ -207,7 +210,7 @@ namespace OnlineMedicineStore.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("MedicinesId")
+                    b.Property<int>("MedicineId")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderId")
@@ -222,8 +225,6 @@ namespace OnlineMedicineStore.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("MedicinesId");
 
                     b.HasIndex("OrderId");
 
@@ -373,10 +374,6 @@ namespace OnlineMedicineStore.Migrations
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("OnlineMedicineStore.Data.Medicine", "Medicines")
-                        .WithMany()
-                        .HasForeignKey("MedicinesId");
-
                     b.HasOne("OnlineMedicineStore.Data.Order", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId")
@@ -384,8 +381,6 @@ namespace OnlineMedicineStore.Migrations
                         .IsRequired();
 
                     b.Navigation("Appuser");
-
-                    b.Navigation("Medicines");
 
                     b.Navigation("Order");
                 });

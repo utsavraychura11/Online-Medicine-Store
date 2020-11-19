@@ -105,7 +105,7 @@ namespace OnlineMedicineStore.Controllers
         }
         public async System.Threading.Tasks.Task<IActionResult> CheckoutAsync(int id)
         {
-           /* var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(Item => Item.Medicines.Price * Item.Quantity);
             var userId = _userService.GetUserId();
@@ -115,29 +115,31 @@ namespace OnlineMedicineStore.Controllers
             }
 
             var user = _userManager.FindByIdAsync(userId).Result;
-            
-            Order1 o1 = new Order1();
+
+            Order o1 = new Order();
             o1.ApplicationUserId = userId;
-            o1.user = user;
-            Context.Order1.Add(o1);
-            await   Context.SaveChangesAsync();
-            
+            o1.AppUser = user;
+          //  o1.Total = ViewBag.total;
+            Context.Orders.Add(o1);
+            await Context.SaveChangesAsync();
+
             /* System.Threading.Thread.Sleep(4000);
              List<Order> o3 = Context1.Order.Where(x => x.ApplicationUserId == userId).ToList();
-          4
-            Order1 o2 = Context1.Order1.Where(x => x.ApplicationUserId == userId).FirstOrDefault();
+          */
+            Order o2 = Context1.Orders.OrderByDescending(x => x.Id).FirstOrDefault(x => x.ApplicationUserId == userId);
             foreach (var c1 in cart)
             {
-                OrderMedicine1 om1 = new OrderMedicine1();
+                OrderMedicine om1 = new OrderMedicine();
                 om1.ApplicationUserId = userId;
-                om1.user = user;
+                om1.Appuser = user;
                 om1.OrderId = o2.Id;
                 om1.Order = o2;
-                om1.Medicines = c1.Medicines;
+                om1.MedicineId = c1.Medicines.Id;
+               // om1.Medicinename = c1.Medicines.MedicineName;
                 om1.Quantity = c1.Quantity;
                 om1.Price_total = (c1.Quantity * c1.Medicines.Price);
-                Context.OrderMedicine1.Add(om1);
-               await  Context.SaveChangesAsync();
+                Context.OrderMedicines.Add(om1);
+                await Context.SaveChangesAsync();
 
 
 
@@ -149,7 +151,9 @@ namespace OnlineMedicineStore.Controllers
 
 
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-            */
+
+            return View();
+
             return View();
 
 

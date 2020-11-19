@@ -13,7 +13,7 @@ namespace OnlineMedicineStore.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-
+        
         public string ApplicationUserId { get; set; }
         public ApplicationUser AppUser { get; set; }
     }

@@ -17,14 +17,18 @@ namespace OnlineMedicineStore.Controllers
     {
         // GET: AdminController
         private readonly AppDbContext Context;
+
+        private readonly AppDbContext _context;
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IAdminRepository _adminRepository;
 
-        public AdminController(AppDbContext context, 
+        public AdminController(AppDbContext context,
             IWebHostEnvironment _webHostEnvironment,
             IAdminRepository adminRepository)
         {
             Context = context;
+
+            _context = context;
             webHostEnvironment = _webHostEnvironment;
             _adminRepository = adminRepository;
         }
@@ -40,70 +44,70 @@ namespace OnlineMedicineStore.Controllers
         {
             return View();
         }
-        
+
         // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  ActionResult Medicineregister(Medicine med)
+        public ActionResult Medicineregister(Medicine med)
         {
             if (ModelState.IsValid)
             {
                 //Write Your Code
-              /* if(med.CoverPhoto != null)
-                {
-                    string folder = "medicines/";
-                    folder += Guid.NewGuid().ToString()+"_"+med.CoverPhoto.FileName;
-                    string serverFolder = Path.Combine(webHostEnvironment.WebRootPath,folder);
+                /* if(med.CoverPhoto != null)
+                  {
+                      string folder = "medicines/";
+                      folder += Guid.NewGuid().ToString()+"_"+med.CoverPhoto.FileName;
+                      string serverFolder = Path.Combine(webHostEnvironment.WebRootPath,folder);
 
-                   await med.CoverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
-                }*/
+                     await med.CoverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
+                  }*/
 
                 var medicine1 = new Medicine
                 {
-                    
+
                     MedicineName = med.MedicineName,
                     Description = med.Description,
                     Category = med.Category,
                     Price = med.Price,
                     IsPrescriptionRequired = med.IsPrescriptionRequired
-                      
+
                 };
                 Context.Medicine.Add(medicine1);
-                
-                var r1= Context.SaveChangesAsync();
-                if(r1.IsCompleted)
+
+                var r1 = Context.SaveChangesAsync();
+                if (r1.IsCompleted)
                 {
                     ViewBag.IsMedicineRegistered = true;
                 }
 
                 ModelState.Clear();
                 return View();
-                
+
             }
             return View(med);
         }
-        
-        //Admin Login
-       /* public IActionResult AdminLogin()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        
-        public IActionResult AdminLogin(string email1 , string password1)
-        {
-            
-            if ( password1.Equals("admin") && email1.Equals("admin@gmail.com") )
-            {
-                return View("/Admin/index/");
-            }
-            else
-            {
-                //ViewBag.message = "invalid credentials !!";
-                return NotFound();
-            }
-        }*/
+        //Admin Login
+        /* public IActionResult AdminLogin()
+         {
+             return View();
+         }
+
+         [HttpPost]
+
+         public IActionResult AdminLogin(string email1 , string password1)
+         {
+
+             if ( password1.Equals("admin") && email1.Equals("admin@gmail.com") )
+             {
+                 return View("/Admin/index/");
+             }
+             else
+             {
+                 //ViewBag.message = "invalid credentials !!";
+                 return NotFound();
+             }
+         }*/
 
         //Admin Logout
         public IActionResult Logout()
@@ -122,19 +126,21 @@ namespace OnlineMedicineStore.Controllers
         {
 
             return View(Context.Medicine.Where(x => x.Id == id).FirstOrDefault());
-            
+
 
 
         }
         [HttpPost]
-        public  ActionResult Edit(int id, Medicine med1)
+        public ActionResult Edit(int id, Medicine med1)
         {
-            try {
+            try
+            {
                 Context.Entry(med1).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 Context.SaveChanges();
                 return RedirectToAction("ViewMedicine");
             }
-            catch  {
+            catch
+            {
                 return View();
             }
 
@@ -173,7 +179,7 @@ namespace OnlineMedicineStore.Controllers
             var allUsers = _adminRepository.GetAllUsers();
             return View(allUsers);
         }
-        
+
         [HttpGet]
         public IActionResult AdminLogin()
         {
@@ -183,9 +189,9 @@ namespace OnlineMedicineStore.Controllers
         [HttpPost]
         public IActionResult AdminLogin(AdminModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if(model.Email.Equals("admin@gmail.com") && model.Password.Equals("admin"))
+                if (model.Email.Equals("admin@gmail.com") && model.Password.Equals("admin"))
                 {
                     return RedirectToAction("Index", "Admin");
                 }
@@ -198,5 +204,6 @@ namespace OnlineMedicineStore.Controllers
             return View();
         }
 
+
     }
-}
+    }
