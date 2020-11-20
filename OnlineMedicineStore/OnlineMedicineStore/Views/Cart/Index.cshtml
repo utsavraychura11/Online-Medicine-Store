@@ -9,9 +9,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Option
-            </th>
 
             <th>
                 MedicineName
@@ -31,45 +28,52 @@
             <th>
                 Sub-Total
             </th>
+            <th>
+                Option
+            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in ViewBag.cart)
         {
-            <tr>
-                <td>
-                    <a asp-action="Remove" asp-route-id="@item.Medicines.Id">Remove this</a> |
-
-                </td>
-
-                <td>
-                    @item.Medicines.MedicineName
-                </td>
-                <td>
-                    @item.Medicines.Description
-                </td>
-                <td>
-                    @item.Medicines.Category
-                </td>
-                <td>
-                    @item.Medicines.Price
-                </td>
-                <th>
-                    @item.Quantity
-                </th>
-                <th>
-                    @(item.Quantity * item.Medicines.Price)
-                </th>
-            </tr>
-        }
         <tr>
-
-            <td align="right" colspan="6">Sum</td>
             <td>
-                @ViewBag.total
+                @item.Medicines.MedicineName
             </td>
+            <td>
+                @item.Medicines.Description
+            </td>
+            <td>
+                @item.Medicines.Category
+            </td>
+            <td>
+                @item.Medicines.Price
+            </td>
+            <th>
+                @item.Quantity
+            </th>
+            <th>
+                @(item.Quantity * item.Medicines.Price)
+            </th>
+
+            <td>
+                <a asp-action="Remove" class="btn btn-danger" asp-route-id="@item.Medicines.Id">Remove this</a>
+
+            </td>
+
         </tr>
+        }
+    <tr>
+
+        <td align="right" colspan="6"> <p class=" h4"> Total Bill : </p></td>
+        <td>
+            <h4 class=" h4">
+                @ViewBag.total Rs
+            </h4>
+        </td>
+    </tr>
     </tbody>
 </table>
 @foreach (var item in ViewBag.cart)
@@ -82,18 +86,12 @@
 
     }
 }
-Please enter prescription if required : 
-<a input type="file" name="file1" value="Enter Prescription"> </a>
-<a id="f1" asp-controller="cart" asp-action="checkout" disabled>goto Checkout</a>
+
+<a id="f1"  class="btn btn-success"asp-controller="cart" asp-action="checkout" disabled>Goto Checkout</a>
 
 
 <a class="btn btn-primary" asp-controller="home" asp-action="viewuser_medicine">Continue Buying</a>
 
-<script>
-    function changefile(input) {
-
-        document.getElementsById('f1').disabled = false;
+<div style="padding-bottom: 70px;"></div>
 
 
-    }
-</script>

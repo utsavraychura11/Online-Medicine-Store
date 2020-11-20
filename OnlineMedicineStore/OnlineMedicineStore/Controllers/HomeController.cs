@@ -42,13 +42,11 @@ namespace OnlineMedicineStore.Controllers
             return View();
         }
 
-        [Authorize]
         public ViewResult AboutUs()
         {
             return View();
         }
 
-        [Authorize]
         public ViewResult ContactUs()
         {
             return View();
@@ -104,6 +102,8 @@ namespace OnlineMedicineStore.Controllers
             }
             return View(user);
         }
+
+        [Authorize]
         public IActionResult viewuser_medicine()
         {
 
